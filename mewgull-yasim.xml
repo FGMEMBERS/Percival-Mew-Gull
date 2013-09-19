@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Percival Mew Gull - 2013 BARANGER Emmanuel with Melchior's script
+     Version E.3H
+ 
+     sources      : http://en.wikipedia.org/wiki/Percival_Mew_Gull
+
+     Wingspan     :  24 ft       ( 7.32 m   )
+     Lenght       :  18 ft  3 in ( 5.56 m   )
+     Height       :   6 ft 10 in ( 2.08 m   )
+     Empty wight  : 996 lb       (  453 kg  )
+     Engine       : 1 De Havilland Gipsy serie II inline ( 205 hp )
+     Max speed    : 218.95 kts   (  405.50 km/h )
+     Cruise speed : 160 kts      (  296.32 km/h )
+-->
+<airplane mass="996" >
+
+  <approach speed="50" aoa="2" fuel="0.3">
+    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.2"/>
+    <control-setting axis="/controls/engines/engine[0]/mixture" value="1"/>
+    <control-setting axis="/controls/flight/flaps" value="1"/>
+  </approach>
+  
+  <cruise speed="160" alt="2000" fuel="0.8">
+    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.7"/>
+    <control-setting axis="/controls/engines/engine[0]/mixture" value="0.7" />
+    <control-setting axis="/controls/flight/flaps" value="0"/>
+  </cruise>
+
+  <cockpit x="-0.377" y="0" z="0.435"/>
+
+  <fuselage ax="2.382" ay="0" az="-0.008" bx="-2.744" by="0" bz="-0.115" width="0.608" taper="0.5" midpoint="0.3"/>
+
+  <wing x="0.56973" y="0.313" z="-0.38826" 
+        chord="1.5" 
+        length="3.341" 
+        taper="0.45"
+        sweep="-3.5"
+        dihedral="4"
+        camber="0.01">
+        <stall aoa="18" width="1" peak="1.5"/>
+        <flap0 start="0.00" end="0.40" lift="1.5" drag="1.4"/>
+        <flap1 start="0.40" end="1.00" lift="1.5" drag="1.3"/>
+
+        <control-input axis="/controls/flight/flaps" control="FLAP0"/>
+        <control-input axis="/controls/flight/aileron" control="FLAP1" split="true"/>
+        <control-input axis="/controls/flight/aileron-trim" control="FLAP1" split="true"/>
+
+        <control-output control="FLAP0" prop="/surface-positions/flap-pos-norm"/>
+        <control-output control="FLAP1" side="left" prop="surface-positions/left-aileron-pos-norm"/>
+        <control-output control="FLAP1" side="right" prop="surface-positions/right-aileron-pos-norm"/>
+  </wing>
+  
+  <hstab x="-1.95091" y="0" z="0.27" 
+         chord="0.808" 
+         length="1.246" 
+         taper="0.43"
+         sweep="4"> 
+         <stall aoa="16" width="1" peak="1.5"/>
+         <flap0 start="0" end="1" lift="1.6" drag="1.3"/>
+
+<control-input axis="/controls/flight/elevator" control="FLAP0"/>
+         <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
+
+         <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
+  </hstab>
+
+  <vstab x="-2.228" y="0" z="-0.161" 
+         chord="1.092" 
+         length="1.170" 
+         taper="0.4"
+         sweep="7">
+         <stall aoa="14" width="1" peak="1.5"/>
+         <flap0 start="0" end="1" lift="1.5" drag="1.3"/>
+
+         <control-input axis="/controls/flight/rudder" square="true" control="FLAP0" invert="true"/>
+         <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
+
+         <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm"  min="1" max="-1"/>
+         </vstab>5.3:1
+
+  <!-- Engines   source            : http://en.wikipedia.org/wiki/De_Havilland_Gipsy_Six
+
+                 name              : de Havilland Gipsy Six
+                 type              : 6-cylinder air-cooled inverted inline piston aircraft engine
+                 power cruise      : 200 hp at 2350 rpm
+                 weight            : 468 lb (213 kg)
+                 compression       : 5.25:1
+                 Displacement      : 560.6 cu in (9.186 L)
+  -->
+  <propeller x="1.67539" y="0" z="-0.04763"
+             mass="468"
+             radius="1.099"
+             moment="2.5"
+             cruise-power="190"
+             cruise-speed="160"
+             cruise-rpm="2000"
+             cruise-alt="2000">
+             <actionpt x="2.47539" y="0" z="0.15237"/>
+             <piston-engine eng-rpm="2200"
+                            eng-power="205"
+                            compression="5.25"
+                            displacement="560.6">
+                            <control-input control="THROTTLE" axis="/controls/engines/engine[0]/throttle"/>
+                            <control-input control="STARTER" axis="/controls/engines/engine[0]/starter"/>
+                            <control-input control="MAGNETOS" axis="/controls/engines/engine[0]/magnetos"/>
+                            <control-input control="MIXTURE" axis="/controls/engines/engine[0]/mixture"/>
+             </piston-engine>
+  </propeller>
+
+  <!-- Left wheel -->
+  <gear x="1.04922" y=" 0.76581" z="-1.25834"
+        compression="0.15"
+        retract-time="4.9"
+        spring="0.6"
+        damp="4.2"
+        sfric="0.8"
+        dfric="0.8">
+        <control-input axis="/controls/gear/brake-left" control="BRAKE"/>
+        <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
+  </gear>
+
+  <!-- Right wheel -->
+  <gear x="1.04922" y="-0.76581" z="-1.25834"
+        compression="0.15"
+        retract-time="5.2"
+        spring="0.6"
+        damp="4.2"
+        sfric="0.8"
+        dfric="0.8">
+        <control-input axis="/controls/gear/brake-right" control="BRAKE"/>
+        <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
+  </gear>
+
+  <!-- Tail wheel -->
+  <gear x="-2.39335" y="0" z="-0.53354"
+        compression="0.1" 
+        spring="0.8"
+        on-solid="1"
+        sfric="1"
+        dfric="1">
+  </gear>
+
+  <!-- Fuel  --> 
+  <tank x="0.65" y=" 1.228" z="-0.34" capacity="410"/>
+  <tank x="0.72" y=" 0.000" z="-0.30" capacity="250"/>
+  <tank x="0.65" y="-1.228" z="-0.34" capacity="410"/>
+
+  <!-- Mass distribution -->
+  <ballast x="-0.377" y="0" z="-0.5" mass="180"/>
+  
+</airplane>
