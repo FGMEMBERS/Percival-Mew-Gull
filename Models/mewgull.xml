@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>mewgull.ac</path>
+
+  <nasal>
+    <load>
+      var livery_update = aircraft.livery_update.new("Aircraft/Percival-Mew-Gull/Models/Liveries", 10);
+
+      var self = cmdarg();
+
+      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+      
+      var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
+      var passenger_door = self.getNode("instrumentation/doors/passenger/position-norm", 1);
+    
+      crew_door.alias(float_0);
+      passenger_door.alias(float_1);
+    </load>
+
+    <unload>
+      livery_update.stop();
+      crew_door.unalias();
+      passenger_door.unalias();
+    </unload>
+  </nasal>
+
+  <animation>
+    <object-name>fuselage</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletG</object-name>
+    <object-name>voletD</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>direction</object-name>
+    <object-name>profondeurG</object-name>
+    <object-name>profondeurD</object-name>
+    <object-name>bol</object-name>
+    <object-name>tourvitres</object-name>
+    <object-name>tourcanopy</object-name>
+    <object-name>axes</object-name>
+    <object-name>cacheG</object-name>
+    <object-name>cacheD</object-name>
+    
+    <object-name>trous</object-name>
+    <object-name>trousG</object-name>
+    <object-name>roueG</object-name>
+    <object-name>trousD</object-name>
+    <object-name>roueD</object-name>
+    <object-name>helice</object-name>
+    <object-name>echappes</object-name>
+
+    <!-- Transparence -->
+    <object-name>vitres</object-name>
+    <object-name>canopy</object-name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>fuselage</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletG</object-name>
+    <object-name>voletD</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>direction</object-name>
+    <object-name>profondeurG</object-name>
+    <object-name>profondeurD</object-name>
+    <object-name>bol</object-name>
+    <object-name>tourvitres</object-name>
+    <object-name>tourcanopy</object-name>
+    <object-name>axes</object-name>
+    <object-name>cacheG</object-name>
+    <object-name>cacheD</object-name>
+    
+    <object-name>trous</object-name>
+    <object-name>trousG</object-name>
+    <object-name>roueG</object-name>
+    <object-name>trousD</object-name>
+    <object-name>roueD</object-name>
+    <object-name>helice</object-name>
+    <object-name>echappes</object-name>
+    
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>texture.png</texture>
+    <specular>
+      <red-prop>specular/red</red-prop>
+      <green-prop>specular/green</green-prop>
+      <blue-prop>specular/blue</blue-prop>
+    </specular>
+    <emission>
+      <red-prop>emission/red</red-prop>
+      <green-prop>emission/green</green-prop>
+      <blue-prop>emission/blue</blue-prop>
+    </emission>
+  </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+    <condition>
+      <not><property>sim/rendering/rembrandt/enabled</property></not>
+    </condition>
+    <object-name>fuselage</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletG</object-name>
+    <object-name>voletD</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>direction</object-name>
+    <object-name>profondeurG</object-name>
+    <object-name>profondeurD</object-name>
+    <object-name>bol</object-name>
+    <object-name>tourvitres</object-name>
+    <object-name>tourcanopy</object-name>
+    <object-name>axes</object-name>
+    <object-name>cacheG</object-name>
+    <object-name>cacheD</object-name>
+  </effect>
+
+  <effect>
+    <inherits-from>Effects/model-combined-deferred</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>fuselage</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletG</object-name>
+    <object-name>voletD</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>direction</object-name>
+    <object-name>profondeurG</object-name>
+    <object-name>profondeurD</object-name>
+    <object-name>bol</object-name>
+    <object-name>tourvitres</object-name>
+    <object-name>tourcanopy</object-name>
+    <object-name>axes</object-name>
+    <object-name>cacheG</object-name>
+    <object-name>cacheD</object-name>
+  </effect>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>vitres</object-name>
+    <object-name>canopy</object-name>
+  </animation>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>vitres</object-name>
+    <object-name>canopy</object-name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </animation>
+
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>vitres</object-name>
+    <object-name>canopy</object-name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </effect>
+
+  <!-- Une ombre pour OSG -->
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/shadow.xml</path>
+    <offsets>
+      <x-m>  0.00 </x-m>
+      <y-m>  0.00 </y-m>
+      <z-m> -1.07 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Interieur -->
+  <model>
+    <name>Interieur</name>
+    <path>Aircraft/Percival-Mew-Gull/Models/Interior/interior.xml</path>
+  </model>
+
+  <!-- For Rembrandt -->
+  <animation>
+    <type>noshadow</type>
+    <object-name>Interieur</object-name>
+  </animation>
+
+  <!-- Cranking effects -->
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -2.12314 </x-m>
+      <y-m>  0.02317 </y-m>
+      <z-m> -0.55433 </z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -1.96314 </x-m>
+      <y-m>  0.02317 </y-m>
+      <z-m> -0.55433 </z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -1.80314 </x-m>
+      <y-m>  0.02317 </y-m>
+      <z-m> -0.55433 </z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -1.64314 </x-m>
+      <y-m>  0.02317 </y-m>
+      <z-m> -0.55433 </z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -1.48314 </x-m>
+      <y-m>  0.02317 </y-m>
+      <z-m> -0.55433 </z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -1.32314 </x-m>
+      <y-m>  0.02317 </y-m>
+      <z-m> -0.55433 </z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+  
+  <!-- Effets sur le sol -->
+  <!-- Roue gauche -->
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/Effects/ground/ground0.xml</path>
+    <offsets>
+      <x-m> -1.04922 </x-m>
+      <y-m> -0.76581 </y-m>
+      <z-m> -1.25834 </z-m>
+    </offsets>
+  </model>
+ 
+  <!-- Roue droite -->
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/Effects/ground/ground1.xml</path>
+    <offsets>
+      <x-m> -1.04922 </x-m>
+      <y-m>  0.76581 </y-m>
+      <z-m> -1.25834 </z-m>
+    </offsets>
+  </model>
+ 
+  <!-- Patte de queue -->
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/Effects/ground/ground2.xml</path>   
+    <offsets>
+      <x-m>  2.39335 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -0.53354 </z-m>
+    </offsets>
+  </model>
+ 
+  <!-- L'hélice --> 
+  <animation>
+    <name>HeliceComplete</name>
+    <object-name>bol</object-name>
+    <object-name>helice</object-name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </animation>
+
+  <!-- Séléction de l'objet visible en fonction des rpm -->
+  <animation>
+    <type>select</type>
+    <object-name>propdisc</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>1500</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propblur</object-name>
+    <condition>
+    <and>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>600.000</value>
+      </greater-than>
+      <less-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>1500.001</value>
+      </less-than>
+    </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>helice</object-name>
+    <condition>
+      <less-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>1500</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>HeliceComplete</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value> 5 </value>
+      </greater-than>
+    </condition>
+    <property>engines/engine[0]/rpm</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m> -2.47539 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  0.14749 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Gouverne de direction -->
+  <animation>
+    <type>rotate</type>
+    <object-name>direction</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m>  2.39148 </x1-m>
+      <y1-m>  0.00000 </y1-m>
+      <z1-m> -0.11950 </z1-m>
+      <x2-m>  2.38412 </x2-m>
+      <y2-m>  0.00000 </y2-m>
+      <z2-m>  0.86580 </z2-m>
+    </axis>
+  </animation>
+  
+  <!-- Gouverne de profondeur -->
+  <animation>
+    <type>rotate</type>
+    <object-name>profondeurG</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m>  2.07639 </x1-m>
+      <y1-m> -1.13052 </y1-m>
+      <z1-m>  0.27837 </z1-m>
+      <x2-m>  2.09765 </x2-m>
+      <y2-m> -0.10085 </y2-m>
+      <z2-m>  0.26930 </z2-m>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <type>rotate</type>
+    <object-name>profondeurD</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m> 2.09765 </x1-m>
+      <y1-m> 0.10085 </y1-m>
+      <z1-m> 0.26930 </z1-m>
+      <x2-m> 2.07639 </x2-m>
+      <y2-m> 1.13052 </y2-m>
+      <z2-m> 0.27837 </z2-m>
+    </axis>
+  </animation>
+ 
+  <!-- Ailerons -->
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronG</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m> -0.46701 </x1-m>
+      <y1-m> -3.18071 </y1-m>
+      <z1-m> -0.21566 </z1-m>
+      <x2-m> -0.30753 </x2-m>
+      <y2-m> -1.66934 </y2-m>
+      <z2-m> -0.33232 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronD</object-name>
+    <property>surface-positions/right-aileron-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m> -0.30753 </x1-m>
+      <y1-m>  1.66934 </y1-m>
+      <z1-m> -0.33232 </z1-m>
+      <x2-m> -0.46701 </x2-m>
+      <y2-m>  3.18071 </y2-m>
+      <z2-m> -0.21566 </z2-m>
+    </axis>
+  </animation>
+ 
+  <!-- Volets  -->
+  <animation>
+    <type>rotate</type>
+    <object-name>voletG</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor> 45 </factor>
+    <axis>
+      <x1-m> -0.36543 </x1-m>
+      <y1-m> -1.65221 </y1-m>
+      <z1-m> -0.37019 </z1-m>
+      <x2-m> -0.27269 </x2-m>
+      <y2-m> -0.47939 </y2-m>
+      <z2-m> -0.46819 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>voletD</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor> 45 </factor>
+    <axis>
+      <x1-m> -0.27269 </x1-m>
+      <y1-m>  0.47939 </y1-m>
+      <z1-m> -0.46819 </z1-m>
+      <x2-m> -0.36543 </x2-m>
+      <y2-m>  1.65221 </y2-m>
+      <z2-m> -0.37019 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Suspension -->
+  <animation>
+    <name>RoueGauche</name>
+    <object-name>roueG</object-name>
+    <object-name>cacheG</object-name>
+    <object-name>trousG</object-name>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>RoueGauche</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+    <interpolation>
+      <entry><ind> 0.00 </ind><dep> -0.01 </dep></entry>
+      <entry><ind> 0.07 </ind><dep>  0.00 </dep></entry>
+      <entry><ind> 1.00 </ind><dep>  0.09 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>RoueDroite</name>
+    <object-name>roueD</object-name>
+    <object-name>cacheD</object-name>
+    <object-name>trousD</object-name>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>RoueDroite</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+    <interpolation>
+      <entry><ind> 0.00 </ind><dep> -0.01 </dep></entry>
+      <entry><ind> 0.07 </ind><dep>  0.00 </dep></entry>
+      <entry><ind> 1.00 </ind><dep>  0.09 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <!-- Canopy -->
+  <animation>
+    <name>CanopyTotale</name>
+    <object-name>canopy</object-name>
+    <object-name>tourcanopy</object-name>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>CanopyTotale</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CanopyTotale</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <factor> 90 </factor>
+    <axis>
+      <x1-m> 0.67455 </x1-m>
+      <y1-m> 0.24073 </y1-m>
+      <z1-m> 0.14151 </z1-m>
+      <x2-m> 0.11057 </x2-m>
+      <y2-m> 0.28136 </y2-m>
+      <z2-m> 0.14151 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Rotation des roues lors du roulage -->
+  <animation>
+    <type>spin</type>
+    <object-name>roueG</object-name>
+    <property>gear/gear[0]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> -1.04922 </x-m>
+      <y-m> -0.76581 </y-m>
+      <z-m> -1.05409 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>roueD</object-name>
+    <property>gear/gear[1]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> -1.04922 </x-m>
+      <y-m>  0.76581 </y-m>
+      <z-m> -1.05409 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Ajout des effets lumineux -->
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/light/beacon.xml</path>
+    <offsets>
+      <x-m> 2.31858 </x-m>
+      <y-m> 0.00000 </y-m>
+      <z-m> 1.01189 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/light/RedLight.xml</path>
+    <offsets>
+      <x-m> -0.83935 </x-m>
+      <y-m> -3.64677 </y-m>
+      <z-m> -0.16506 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/light/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -0.82235 </x-m>
+      <y-m> -3.64977 </y-m>
+      <z-m> -0.16506 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/light/GreenLight.xml</path>
+    <offsets>
+      <x-m> -0.83935 </x-m>
+      <y-m>  3.64677 </y-m>
+      <z-m> -0.16506 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Percival-Mew-Gull/Models/light/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -0.82235 </x-m>
+      <y-m>  3.64977 </y-m>
+      <z-m> -0.16506 </z-m>
+    </offsets>
+  </model>
+
+</PropertyList>
